@@ -1,0 +1,33 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+h1 {
+  color: #333;
+}
+
+p {
+  font-size: 1.2rem;
+  padding: 1rem;
+  border-radius: 8px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+}
+
+p.success {
+  background-color: #e6f7e8;
+  color: #2e7d32;
+  border-color: #66bb6a;
+}
+
+p.error {
+  background-color: #ffebee;
+  color: #c62828;
+  border-color: #ef5350;
+}

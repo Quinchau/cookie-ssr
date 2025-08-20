@@ -1,0 +1,9 @@
+<div class="container">
+  <h1>Estado de Autenticación</h1>
+  <p *ngIf="isLoggedIn$ | async">
+    ✅ ¡Estás autenticado! El servidor te ha reconocido.
+  </p>
+  <p *ngIf="!(isLoggedIn$ | async)">
+    ❌ No estás autenticado.
+  </p>
+</div>
