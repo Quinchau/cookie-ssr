@@ -16,16 +16,13 @@ export function app(): express.Express {
   const indexHtml = join(serverDistFolder, 'index.server.html');
 
   const commonEngine = new CommonEngine();
-
+  server.use(cookieParser());
   server.set('view engine', 'html');
   server.set('views', browserDistFolder);
-  server.use(cookieParser());
-
-  // ✅ 1. Renderizar la aplicación de Angular primero para todas las rutas.
+  
   server.get('**', (req, res, next) => {
     const { protocol, originalUrl, baseUrl, headers } = req;
     
-    // Si la URL es de un archivo estático, pasamos al siguiente handler.
     if (originalUrl.includes('.')) {
       next();
       return;
@@ -47,8 +44,7 @@ export function app(): express.Express {
       .catch((err) => next(err));
   });
 
-  // ✅ 2. Servir los archivos estáticos después como fallback.
-  server.get('**', express.static(browserDistFolder, {
+   server.get('**', express.static(browserDistFolder, {
     maxAge: '1y',
     index: 'index.html',
   }));
